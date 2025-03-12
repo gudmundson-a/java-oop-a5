@@ -45,7 +45,7 @@ class BinOpButton extends CalculatorButton {
                 setColor(Color.ORANGE);
                 break;
             case OpReady:
-                situation.binaryOperator.setColor(Color.LIGHT_GRAY); // Turn off old button
+                situation.binaryOperator.setColor(Color.LIGHT_GRAY);
                 situation.binaryOperator = this;
                 setColor(Color.ORANGE);
                 break;
