@@ -19,14 +19,37 @@ class EqualsButton extends CalculatorButton {
     Vi ändrar färgerna tillbaka till samma som början och sätter State till
     HasResult.
      */
+
     @Override
-    protected void transition() {
-        if (situation.state == State.Input2) {
-            int rightOperand = Integer.parseInt(situation.display.getText());
-            int result = situation.binaryOperator.getOperator().applyAsInt(situation.leftOperand, rightOperand);
-            situation.display.setText(String.valueOf(result));
-            situation.binaryOperator.setColor(Color.LIGHT_GRAY);
-            situation.state = State.HasResult;
+    protected void transition(){
+        switch(situation.state){
+            case Input1:
+                break;
+            case OpReady:
+                break;
+            case HasResult:
+                break;
+            case Input2:
+                int rightOperand = Integer.parseInt(situation.display.getText());
+                try{
+                    int result = situation.binaryOperator.getOperator().applyAsInt(situation.leftOperand, rightOperand);
+                    situation.display.setText(String.valueOf(result));
+                } catch (Exception e){
+                    situation.display.setText("Error..");
+                }
+                situation.binaryOperator.setColor(Color.LIGHT_GRAY);
+                situation.state = State.HasResult;
         }
     }
+
+//    @Override
+//    protected void transition() {
+//        if (situation.state == State.Input2) {
+//            int rightOperand = Integer.parseInt(situation.display.getText());
+//            int result = situation.binaryOperator.getOperator().applyAsInt(situation.leftOperand, rightOperand);
+//            situation.display.setText(String.valueOf(result));
+//            situation.binaryOperator.setColor(Color.LIGHT_GRAY);
+//            situation.state = State.HasResult;
+//        }
+//    }
 }
